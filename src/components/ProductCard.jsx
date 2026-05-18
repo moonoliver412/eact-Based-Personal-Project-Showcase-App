@@ -7,11 +7,12 @@ export default function ProductCard({ product }) {
     <article className="card">
       <img src={product.image} alt={product.name} className="card-img" />
       <div className="card-body">
-        <h3>{product.name}</h3>
         <p className="card-category">{product.category}</p>
+        <h3>{product.name}</h3>
         <p className="card-price">${Number(product.price).toFixed(2)}</p>
         <Link to={`/products/${product.id}`} className="btn btn-secondary">
           View / Edit
+          <span aria-hidden="true">→</span>
         </Link>
       </div>
     </article>

@@ -12,6 +12,7 @@ const EMPTY_FORM = {
 };
 
 // Page with a controlled form for adding a new product (a CREATE request).
+// The form runs on one continuous navy surface — sage-on-navy fields.
 export default function ProductForm() {
   const { addProduct } = useProductsContext();
   const navigate = useNavigate();
@@ -47,7 +48,8 @@ export default function ProductForm() {
   }
 
   return (
-    <section>
+    <section className="panel bg-navy">
+      <span className="eyebrow">New entry</span>
       <h1>Add a New Product</h1>
       <form className="form" onSubmit={handleSubmit}>
         <label>

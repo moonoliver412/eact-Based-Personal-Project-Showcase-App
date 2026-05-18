@@ -23,9 +23,12 @@ export default function ProductList() {
 
   return (
     <section>
+      <span className="eyebrow">Catalog</span>
       <h1>Products</h1>
       <SearchBar value={search} onChange={setSearch} />
-      <p className="result-count">{filtered.length} product(s) found</p>
+      <p className="result-count">
+        {filtered.length} product{filtered.length === 1 ? "" : "s"} found
+      </p>
       {filtered.length === 0 ? (
         <p className="status">No products match your search.</p>
       ) : (
