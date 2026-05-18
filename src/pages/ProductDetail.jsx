@@ -20,7 +20,7 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <section>
+      <section className="notfound">
         <p className="status error">Product not found.</p>
         <Link to="/products" className="btn btn-secondary">
           Back to Products
@@ -73,24 +73,21 @@ export default function ProductDetail() {
       <div className="detail-grid">
         <img src={product.image} alt={product.name} className="detail-img" />
         <div>
-          <h1>{product.name}</h1>
-
           {!editing ? (
             <>
               <p className="card-category">{product.category}</p>
-              <p className="card-price">
+              <h1>{product.name}</h1>
+              <p className="detail-price">
                 ${Number(product.price).toFixed(2)}
               </p>
-              <p>
-                <strong>In stock:</strong> {product.stock}
-              </p>
-              <p>{product.description}</p>
+              <p className="detail-stock">In stock — {product.stock}</p>
+              <p className="detail-desc">{product.description}</p>
               <div className="detail-actions">
                 <button className="btn btn-primary" onClick={startEdit}>
                   Edit
                 </button>
                 <button
-                  className="btn btn-danger"
+                  className="btn btn-outline"
                   onClick={handleDelete}
                   disabled={busy}
                 >
@@ -99,66 +96,70 @@ export default function ProductDetail() {
               </div>
             </>
           ) : (
-            <form className="form" onSubmit={handleSave}>
-              <label>
-                Price ($)
-                <input
-                  name="price"
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  value={draft.price}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
-              <label>
-                Stock
-                <input
-                  name="stock"
-                  type="number"
-                  min="0"
-                  value={draft.stock}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
-              <label>
-                Category
-                <input
-                  name="category"
-                  value={draft.category}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
-              <label>
-                Description
-                <textarea
-                  name="description"
-                  rows="3"
-                  value={draft.description}
-                  onChange={handleChange}
-                  required
-                />
-              </label>
-              <div className="detail-actions">
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  disabled={busy}
-                >
-                  {busy ? "Saving…" : "Save Changes"}
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  onClick={() => setEditing(false)}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
+            <>
+              <span className="eyebrow">Editing</span>
+              <h1>{product.name}</h1>
+              <form className="form" onSubmit={handleSave}>
+                <label>
+                  Price ($)
+                  <input
+                    name="price"
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    value={draft.price}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+                <label>
+                  Stock
+                  <input
+                    name="stock"
+                    type="number"
+                    min="0"
+                    value={draft.stock}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+                <label>
+                  Category
+                  <input
+                    name="category"
+                    value={draft.category}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+                <label>
+                  Description
+                  <textarea
+                    name="description"
+                    rows="3"
+                    value={draft.description}
+                    onChange={handleChange}
+                    required
+                  />
+                </label>
+                <div className="detail-actions">
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    disabled={busy}
+                  >
+                    {busy ? "Saving…" : "Save Changes"}
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={() => setEditing(false)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </>
           )}
         </div>
       </div>

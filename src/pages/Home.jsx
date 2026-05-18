@@ -1,34 +1,50 @@
 import { Link } from "react-router-dom";
 
-// Landing page. Explains what the portal is for and links into the main tasks.
+// Landing page. A navy hero panel states what the portal is for, followed by
+// three numbered feature cards on the sage surface below it.
 export default function Home() {
   return (
     <section className="home">
-      <h1>Admin Product Portal</h1>
-      <p className="lead">
-        Manage the e-commerce catalog from one place. Add new products, update
-        pricing and stock levels, search the inventory, and remove items that
-        are no longer for sale.
-      </p>
-      <div className="home-actions">
-        <Link to="/products" className="btn btn-primary">
-          Browse Products
-        </Link>
-        <Link to="/products/new" className="btn btn-secondary">
-          Add a Product
-        </Link>
+      <div className="hero panel bg-navy">
+        <span className="eyebrow">Store operations</span>
+        <h1 className="hero-title">
+          The admin <em>product</em> portal
+        </h1>
+        <p className="hero-sub">
+          Manage the e-commerce catalog from one place. Add new products,
+          update pricing and stock levels, search the inventory, and remove
+          items that are no longer for sale.
+        </p>
+        <div className="hero-actions">
+          <Link to="/products" className="btn btn-primary">
+            Browse Products
+            <span aria-hidden="true">→</span>
+          </Link>
+          <Link to="/products/new" className="btn btn-outline">
+            Add a Product
+          </Link>
+        </div>
       </div>
+
+      <div className="section-head">
+        <span className="eyebrow">Toolkit</span>
+        <h2>Everything the catalog needs</h2>
+      </div>
+
       <div className="feature-grid">
         <div className="feature">
-          <h3>📦 Manage Catalog</h3>
+          <span className="feature-num">001</span>
+          <h3>Manage catalog</h3>
           <p>View every product in the store at a glance.</p>
         </div>
         <div className="feature">
-          <h3>✏️ Update Details</h3>
+          <span className="feature-num">002</span>
+          <h3>Update details</h3>
           <p>Change price, stock, and descriptions in seconds.</p>
         </div>
         <div className="feature">
-          <h3>🔍 Quick Search</h3>
+          <span className="feature-num">003</span>
+          <h3>Quick search</h3>
           <p>Find any product instantly as you type.</p>
         </div>
       </div>

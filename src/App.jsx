@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound.jsx";
 export default function App() {
   return (
     <ProductsProvider>
+      <div className="nav-banner">Internal tool · catalog access for store administrators</div>
       <NavBar />
       <main className="container">
         <Routes>
